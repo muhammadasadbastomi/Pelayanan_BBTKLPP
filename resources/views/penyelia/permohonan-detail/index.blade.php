@@ -31,13 +31,6 @@
                 <p>Silahkan Menyerahkan Sampel Pada Hari
                     {{carbon\carbon::parse($permohonan->tanggal_jam_terima)->translatedFormat('l, d F Y')}} </p>
             </div>
-            @elseif($permohonan->status == 9)
-            <div class="card-header" style="backround-colo:red !important">
-                <p>Silahkan Melakukan Pembayaran Senilai <b>Rp.{{$permohonan->detail_permohonan->sum('harga')}}</b> dan
-                    Pengambilan LHU pada Hari dan Waktu Jam
-                    Kerja BBTKLPP Kota
-                    Banjarbaru</p>
-            </div>
             @endif
             <div class="card-body">
                 <div class="table-responsive m-t-40">

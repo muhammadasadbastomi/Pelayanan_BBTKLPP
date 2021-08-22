@@ -13,6 +13,7 @@
     <title>Aplikasi Pelayanan BBTKLP</title>
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+    {{-- <link href="{{asset('datetime/datetime.css')}}" rel="stylesheet"> --}}
     <link href="{{asset('dist/css/pages/floating-label.css')}}" rel="stylesheet">
     <link href="{{asset('assets/node_modules/dropify/dist/css/dropify.css')}}" rel="stylesheet">
     <link href="{{asset('assets/node_modules/datatables/jquery.dataTables.min.css')}}" rel="stylesheet">
@@ -39,7 +40,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Elite admin</p>
+            <p class="loader__label">Pemohon</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -403,40 +404,32 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <li class="nav-small-cap">--- MENU UTAMA</li>
-                    <li> <a class="waves-effect waves-dark" href="{{Route('admin.index')}}"><i
+                    <li> <a class="waves-effect waves-dark" href="{{Route('penyelia.index')}}"><i
                                 class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></a>
                     </li>
                     {{-- @if (Auth::user()->role == 0) --}}
-                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                    {{-- <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="ti-palette"></i><span class="hide-menu">Manajemen User
                         </a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="{{Route('admin.user.index')}}">User</a></li>
-                        </ul>
-                    </li>
-                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                                class="ti-server"></i><span class="hide-menu">Master
-                                Data</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('admin.jenis.index')}}">Jenis Sampel</a></li>
-                            <li><a href="{{route('admin.jenis-pengujian.index')}}">Jenis Pengujian</a></li>
-                        </ul>
-                    </li>
-                    <li> <a class="waves-effect waves-dark" href="{{route('admin.permohonan.index')}}"><i
-                                class="ti-receipt"></i>Data
-                            Permohonan</span></a>
-                    </li>
-                    {{-- <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                </ul>
+                </li> --}}
+                <li> <a class="waves-effect waves-dark" href="{{route('penyelia.permohonan.index')}}"><i
+                            class="ti-receipt"></i>Data
+                        Permohonan</span></a>
+                </li>
+                {{-- <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="ti-server"></i><span class="hide-menu">Master
                                 Data</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="{{route('admin.desa.index')}}">Desa</a></li>
-                    <li><a href="{{route('admin.jabatan.index')}}">Jabatan</a></li>
-                    <li><a href="{{route('admin.camat.index')}}">Camat</a></li>
-                    <li><a href="{{route('admin.kasi.index')}}">Kepala Seksi</a></li>
-                    <li><a href="{{route('admin.pegawai.index')}}">Pegawai</a></li>
-                    <li><a href="{{route('admin.petugas.index')}}">Petugas</a></li>
-                    <li><a href="{{route('admin.jadwal.index')}}">Jadwal Petugas</a></li>
+                <li><a href="{{route('admin.jabatan.index')}}">Jabatan</a></li>
+                <li><a href="{{route('admin.camat.index')}}">Camat</a></li>
+                <li><a href="{{route('admin.kasi.index')}}">Kepala Seksi</a></li>
+                <li><a href="{{route('admin.pegawai.index')}}">Pegawai</a></li>
+                <li><a href="{{route('admin.petugas.index')}}">Petugas</a></li>
+                <li><a href="{{route('admin.jadwal.index')}}">Jadwal Petugas</a></li>
                 </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
@@ -523,6 +516,8 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     <script src="{{asset('assets/node_modules/jquery/jquery-3.2.1.min.js')}}"></script>
+    {{-- <script src="{{asset('datetime/moment.js')}}"></script>
+    <script src="{{asset('datetime/datetime.js')}}"></script> --}}
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{asset('assets/node_modules/popper/popper.min.js')}}"></script>
     <script src="{{asset('assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -545,6 +540,9 @@
     </script>
     <script>
         $('#myTable').dataTable();
+    </script>
+    <script type="text/javascript">
+        $('#datetimepicker1').datetimepicker();
     </script>
     @include('layouts.alert')
     @include('layouts.alert_error')

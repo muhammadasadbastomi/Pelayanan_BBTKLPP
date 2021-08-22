@@ -13,9 +13,9 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                 <li class="breadcrumb-item active">Data Permohonan</li>
             </ol>
-            <a href="{{Route('pemohon.permohonan.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i
-                    class="fa fa-plus-circle"></i> Tambah
-                Data</a>
+            {{-- <a href="{{Route('penyelia.permohonan.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i
+                class="fa fa-plus-circle"></i> Tambah
+            Data</a> --}}
         </div>
     </div>
 </div>
@@ -50,9 +50,9 @@
                         <tbody>
                             @foreach ($data as $d)
 
-                            <tr @if ($d->tanggal_jam_terima && $d->status == 1)
+                            <tr @if ($d->tanggal_jam_terima)
                                 style="background-color:rgba(222, 255, 43, 0.16);"
-                                @elseif($d->permohonan_detail == null && $d->status == 0)
+                                @elseif($d->permohonan_detail == null)
 
                                 style="background-color:rgba(255, 0, 0, 0.16)"
                                 @endif
@@ -84,17 +84,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{Route('pemohon.permohonan.edit',$d->id)}}"
-                                        class="btn btn-sm btn-info m-l-15"><i class="fa fa-edit"></i>
-                                        Edit</a>
-                                    <a href="{{Route('pemohon.permohonan-detail.index',$d->id)}}"
+                                    <a href="{{Route('penyelia.permohonan.show',$d->id)}}"
                                         class="btn btn-sm btn-primary m-l-15"><i class="fa fa-eye"></i>
                                         Detail</a>
-
-                                    <button type="button" data-route="{{Route('pemohon.permohonan.destroy',$d->id)}}"
-                                        class="btn btn-sm btn-danger m-l-15 delete" data-toggle="modal"
-                                        data-target="#exampleModal"><i class="fa fa-trash"></i> Hapus
-                                    </button>
                                 </td>
                             </tr>
                             @endforeach

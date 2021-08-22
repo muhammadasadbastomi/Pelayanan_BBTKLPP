@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.penyelia')
 
 @section('content')
 <!-- ============================================================== -->
@@ -19,20 +19,17 @@
             </ol>
             @endif
             @if($permohonan->stp->detail_stp->count() != 0)
-            <a target="_blank" href="{{Route('admin.report.stp',$permohonan->id)}}"
-                class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
+            <a href="" class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
                 Cetak
                 STP</a>
             @endif
             @if($permohonan->stp->detail_stp->first()->lhus->count() != 0)
-            <a target="_blank" href="{{Route('admin.report.lhus',$permohonan->id)}}"
-                class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
+            <a href="" class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
                 Cetak
                 LHUS</a>
             @endif
             @if($permohonan->stp->detail_stp->first()->lhu->count() != 0)
-            <a target="_blank" href="{{Route('admin.report.lhu',$permohonan->id)}}"
-                class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
+            <a href="" class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
                 Cetak
                 LHU</a>
             @endif

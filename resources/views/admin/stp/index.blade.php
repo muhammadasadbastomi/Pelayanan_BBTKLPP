@@ -5,15 +5,15 @@
 <!-- ============================================================== -->
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Data Jenis Pengujian</h4>
+        <h4 class="text-themecolor">Data STP</h4>
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">Data Jenis Pengujian</li>
+                <li class="breadcrumb-item active">Data STP</li>
             </ol>
-            <a href="{{Route('admin.jenis-pengujian-detail.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i
+            <a href="{{Route('admin.stp.create',$stp->id)}}" class="btn btn-info d-none d-lg-block m-l-15"><i
                     class="fa fa-plus-circle"></i> Tambah
                 Data</a>
         </div>
@@ -36,26 +36,23 @@
 
                             <tr>
                                 <th>No</th>
-                                <th>Nama Jenis Pengujian</th>
+                                <th>Nama Analisis</th>
+                                <th>Nomor Sampel</th>
+                                <th>Parameter</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($jenis_pengujian->detail_jenis_pengujian as $d)
+                            @foreach ($stp->detail_stp as $d)
 
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$d->nama_metode}}</td>
+                                <td>{{$d->user->nama}}</td>
+                                <td>{{$d->no_sampel}}</td>
+                                <td>{{$d->detail_jenis_pengujian->nama}} ({{$d->detail_jenis_pengujian->kode}})</td>
                                 <td>
-                                    <a href="{{Route('admin.jenis-pengujian-detail.edit',$d->id)}}"
-                                        class="btn btn-sm btn-info m-l-15"><i class="fa fa-edit"></i>
-                                        Edit</a>
-                                    <a href="{{Route('admin.jenis-pengujian-detail.show',$d->id)}}"
-                                        class="btn btn-sm  btn-primary m-l-15"><i class="fa fa-eye"></i>
-                                        Detail</a>
-                                    <button type="button"
-                                        data-route="{{Route('admin.jenis-pengujian-detail.destroy',$d->id)}}"
-                                        class="btn btn-sm btn-danger m-l-15 delete" data-toggle="modal"
+                                    <button type="button" data-route="{{Route('admin.stp.destroy',$d->id)}}"
+                                        class="btn btn-danger m-l-15 delete" data-toggle="modal"
                                         data-target="#exampleModal"><i class="fa fa-trash"></i> Hapus
                                     </button>
                                 </td>
@@ -67,6 +64,11 @@
 
                 </div>
 
+            </div>
+            <div class="card-footer ">
+                <a href="{{Route('admin.permohonan.show',$stp->permohonan->id)}}"
+                    class="btn btn-block btn-primary  m-l-15"><i class="fa fa-exit"></i>
+                    Kembali</a>
             </div>
         </div>
     </div>

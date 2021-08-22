@@ -5,8 +5,12 @@ use App\Http\Controllers\DetailJenisPengujianController;
 use App\Http\Controllers\DetailPermohonanController;
 use App\Http\Controllers\JenisController;
 use App\Http\Controllers\JenisPengujianController;
+use App\Http\Controllers\LhuController;
+use App\Http\Controllers\LhusController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PermohonanController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\StpController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,51 +52,69 @@ Route::middleware(['admin'])->group(function () {
         });
 
         Route::resource('permohonan', PermohonanController::class);
+        Route::name('stp.')->prefix('stp')->group(function () {
+            Route::get('/index/{id}', [StpController::class, 'index'])->name('index');
+            Route::get('/create/{id}', [StpController::class, 'create'])->name('create');
+            Route::post('/store/', [StpController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [StpController::class, 'edit'])->name('edit');
+            Route::put('/edit/{id}', [StpController::class, 'update'])->name('update');
+            Route::delete('/delete/{id}', [StpController::class, 'destroy'])->name('destroy');
+        });
+        Route::name('lhus.')->prefix('lhus')->group(function () {
+            Route::get('/index/{id}', [LhusController::class, 'index'])->name('index');
+            Route::get('/create/{id}', [LhusController::class, 'create'])->name('create');
+            Route::post('/store/', [LhusController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [LhusController::class, 'edit'])->name('edit');
+            Route::put('/edit/{id}', [LhusController::class, 'update'])->name('update');
+            Route::delete('/delete/{id}', [LhusController::class, 'destroy'])->name('destroy');
+        });
+        Route::name('lhu.')->prefix('lhu')->group(function () {
+            Route::get('/index/{id}', [LhuController::class, 'index'])->name('index');
+            Route::get('/create/{id}', [LhuController::class, 'create'])->name('create');
+            Route::post('/store/', [LhuController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [LhuController::class, 'edit'])->name('edit');
+            Route::put('/edit/{id}', [LhuController::class, 'update'])->name('update');
+            Route::delete('/delete/{id}', [LhuController::class, 'destroy'])->name('destroy');
+        });
 
-        // Route::resource('camat', CamatController::class);
-        // Route::resource('kasi', KasiController::class);
-        // Route::resource('petugas', PetugasController::class);
-        // Route::resource('kegiatan', KegiatanController::class);
-        // Route::resource('konflik', KonflikController::class);
-        // Route::resource('gangguan', GangguanController::class);
-        // Route::resource('kriminal', KriminalController::class);
-        // Route::resource('jadwal', JadwalController::class);
-        // Route::resource('jabatan', JabatanController::class);
-        // Route::resource('pegawai', PegawaiController::class);
+        // report
+        Route::name('report.')->prefix('laporan')->group(function () {
+            Route::get('stp/{id}', [ReportController::class, 'stp'])->name('stp');
+            Route::get('lhus/{id}', [ReportController::class, 'lhus'])->name('lhus');
+            Route::get('lhu/{id}', [ReportController::class, 'lhu'])->name('lhu');
+            // Route::get('/cetak/kegiatan', [ReportController::class, 'kegiatanAll'])->name('kegiatanAll');
+            // Route::post('/cetak/kegiatan-tahun', [ReportController::class, 'kegiatanYear'])->name('kegiatanYear');
+            // Route::post('/cetak/kegiatan-bulan', [ReportController::class, 'kegiatanMonth'])->name('kegiatanMonth');
 
-        // Route::name('report.')->prefix('laporan')->group(function () {
-        //     Route::get('kegiatan', [ReportController::class, 'kegiatanIndex'])->name('kegiatanIndex');
-        //     Route::get('/cetak/kegiatan', [ReportController::class, 'kegiatanAll'])->name('kegiatanAll');
-        //     Route::post('/cetak/kegiatan-tahun', [ReportController::class, 'kegiatanYear'])->name('kegiatanYear');
-        //     Route::post('/cetak/kegiatan-bulan', [ReportController::class, 'kegiatanMonth'])->name('kegiatanMonth');
+            // Route::get('konflik', [ReportController::class, 'konflikIndex'])->name('konflikIndex');
+            // Route::get('/cetak/konflik', [ReportController::class, 'konflikAll'])->name('konflikAll');
+            // Route::post('/cetak/konflik-tahun', [ReportController::class, 'konflikYear'])->name('konflikYear');
+            // Route::post('/cetak/konflik-bulan', [ReportController::class, 'konflikMonth'])->name('konflikMonth');
 
-        //     Route::get('konflik', [ReportController::class, 'konflikIndex'])->name('konflikIndex');
-        //     Route::get('/cetak/konflik', [ReportController::class, 'konflikAll'])->name('konflikAll');
-        //     Route::post('/cetak/konflik-tahun', [ReportController::class, 'konflikYear'])->name('konflikYear');
-        //     Route::post('/cetak/konflik-bulan', [ReportController::class, 'konflikMonth'])->name('konflikMonth');
+            // Route::get('gangguan', [ReportController::class, 'gangguanIndex'])->name('gangguanIndex');
+            // Route::get('/cetak/gangguan', [ReportController::class, 'gangguanAll'])->name('gangguanAll');
+            // Route::post('/cetak/gangguan-tahun', [ReportController::class, 'gangguanYear'])->name('gangguanYear');
+            // Route::post('/cetak/gangguan-bulan', [ReportController::class, 'gangguanMonth'])->name('gangguanMonth');
 
-        //     Route::get('gangguan', [ReportController::class, 'gangguanIndex'])->name('gangguanIndex');
-        //     Route::get('/cetak/gangguan', [ReportController::class, 'gangguanAll'])->name('gangguanAll');
-        //     Route::post('/cetak/gangguan-tahun', [ReportController::class, 'gangguanYear'])->name('gangguanYear');
-        //     Route::post('/cetak/gangguan-bulan', [ReportController::class, 'gangguanMonth'])->name('gangguanMonth');
+            // Route::get('kriminal', [ReportController::class, 'kriminalIndex'])->name('kriminalIndex');
+            // Route::get('/cetak/kriminal', [ReportController::class, 'kriminalAll'])->name('kriminalAll');
+            // Route::post('/cetak/kriminal-tahun', [ReportController::class, 'kriminalYear'])->name('kriminalYear');
+            // Route::post('/cetak/kriminal-bulan', [ReportController::class, 'kriminalMonth'])->name('kriminalMonth');
 
-        //     Route::get('kriminal', [ReportController::class, 'kriminalIndex'])->name('kriminalIndex');
-        //     Route::get('/cetak/kriminal', [ReportController::class, 'kriminalAll'])->name('kriminalAll');
-        //     Route::post('/cetak/kriminal-tahun', [ReportController::class, 'kriminalYear'])->name('kriminalYear');
-        //     Route::post('/cetak/kriminal-bulan', [ReportController::class, 'kriminalMonth'])->name('kriminalMonth');
+            // Route::get('/cetak/grafik-kejadian', [ReportController::class, 'grafik'])->name('grafik');
+            // Route::get('/cetak/petugas', [ReportController::class, 'petugas'])->name('petugas');
+            // Route::get('/cetak/kasi', [ReportController::class, 'kasi'])->name('kasi');
+            // Route::get('/cetak/camat', [ReportController::class, 'camat'])->name('camat');
+            // Route::get('/cetak/jadwal-petugas', [ReportController::class, 'jadwal'])->name('jadwal');
+            // Route::get('surat-petugas', [ReportController::class, 'suratIndex'])->name('suratIndex');
+            // Route::post('/cetak/surat-petugas/', [ReportController::class, 'surat'])->name('surat');
+            // Route::get('/cetak/pegawai', [ReportController::class, 'pegawai'])->name('pegawai');
+            // Route::get('/cetak/BA-kegiatan/{id}', [ReportController::class, 'baKegiatan'])->name('baKegiatan');
+            // Route::get('/cetak/BA-gangguan/{id}', [ReportController::class, 'baGangguan'])->name('baGangguan');
+            // Route::get('/cetak/BA-konflik/{id}', [ReportController::class, 'baKonflik'])->name('baKonflik');
+            // Route::get('/cetak/BA-kriminal/{id}', [ReportController::class, 'baKriminal'])->name('baKriminal');
+        });
 
-        //     Route::get('/cetak/grafik-kejadian', [ReportController::class, 'grafik'])->name('grafik');
-        //     Route::get('/cetak/petugas', [ReportController::class, 'petugas'])->name('petugas');
-        //     Route::get('/cetak/kasi', [ReportController::class, 'kasi'])->name('kasi');
-        //     Route::get('/cetak/camat', [ReportController::class, 'camat'])->name('camat');
-        //     Route::get('/cetak/jadwal-petugas', [ReportController::class, 'jadwal'])->name('jadwal');
-        //     Route::get('surat-petugas', [ReportController::class, 'suratIndex'])->name('suratIndex');
-        //     Route::post('/cetak/surat-petugas/', [ReportController::class, 'surat'])->name('surat');
-        //     Route::get('/cetak/pegawai', [ReportController::class, 'pegawai'])->name('pegawai');
-        //     Route::get('/cetak/BA-kegiatan/{id}', [ReportController::class, 'baKegiatan'])->name('baKegiatan');
-        //     Route::get('/cetak/BA-gangguan/{id}', [ReportController::class, 'baGangguan'])->name('baGangguan');
-        //     Route::get('/cetak/BA-konflik/{id}', [ReportController::class, 'baKonflik'])->name('baKonflik');
-        // Route::get('/cetak/BA-kriminal/{id}', [ReportController::class, 'baKriminal'])->name('baKriminal');
     });
 });
 
@@ -115,5 +137,7 @@ Route::middleware(['pemohon'])->group(function () {
 Route::middleware(['penyelia'])->group(function () {
     Route::name('penyelia.')->prefix('penyelia')->group(function () {
         Route::get('/index', [DashboardController::class, 'penyeliaIndex'])->name('index');
+        Route::resource('permohonan', PermohonanController::class);
+
     });
 });

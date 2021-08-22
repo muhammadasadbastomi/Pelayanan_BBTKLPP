@@ -19,6 +19,7 @@ class CreateDetailJenisPengujiansTable extends Migration
             $table->foreign('jenis_pengujian_id')->references('id')->on('jenis_pengujians')->onDelete('restrict');
             $table->string('nama');
             $table->string('kode')->nullable();
+            $table->string('satuan');
             $table->string('harga');
             $table->timestamps();
         });

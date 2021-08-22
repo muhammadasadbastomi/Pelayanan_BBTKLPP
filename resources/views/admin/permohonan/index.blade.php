@@ -69,6 +69,14 @@
                                     @case(1)
                                     <button class="btn btn-sm btn-warning">Menunggu Penyerahan Sampel</button>
                                     @break
+                                    @case(2)
+                                    <button class="btn btn-sm btn-warning">Proses LHUS dan STP Petugas Pelayanan
+                                        Teknik</button>
+                                    @break
+                                    @case(3)
+                                    <button class="btn btn-sm btn-warning">Penyerahan Sampel, LHUS dan STP oleh petugas
+                                        pelayanan teknik ke laboratorium</button>
+                                    @break
                                     @default
 
                                     @endswitch
@@ -83,16 +91,10 @@
                                         class="btn btn-sm btn-primary m-l-15"><i class="fa fa-check"></i>
                                         Verifikasi</a>
                                     @break
-                                    @case(1)
+                                    @default
                                     <a href="{{Route('admin.permohonan.show',$d->id)}}"
                                         class="btn btn-sm btn-primary m-l-15"><i class="fa fa-eye"></i> Detail
                                     </a>
-                                    @break
-                                    @case(2)
-                                    <button class="btn btn-sm btn-warning">Buat LHUS</button>
-                                    <button class="btn btn-sm btn-warning">Buat STP</button>
-                                    @break
-                                    @default
 
                                     @endswitch
 

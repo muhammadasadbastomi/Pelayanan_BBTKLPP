@@ -2,21 +2,22 @@
 
 namespace App\Models;
 
-use App\Models\JenisPengujian;
+use App\Models\DetailStp;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class DetailJenisPengujian extends Model
+class Lhu extends Model
 {
     protected $guarded = ['id'];
 
     /**
-     * Get the jenis_pengujian that owns the DetailJenisPengujian
+     * Get the detail_stp that owns the Lhu
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function jenis_pengujian(): BelongsTo
+    public function detail_stp(): BelongsTo
     {
-        return $this->belongsTo(JenisPengujian::class);
+        return $this->belongsTo(DetailStp::class);
     }
+
 }

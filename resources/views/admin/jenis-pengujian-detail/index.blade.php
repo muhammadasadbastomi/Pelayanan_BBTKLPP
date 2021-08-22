@@ -38,6 +38,7 @@
                                 <th>No</th>
                                 <th>Kode Detail Jenis Pengujian (Satuan)</th>
                                 <th>Nama Detail Jenis Pengujian</th>
+                                <th>Satuan</th>
                                 <th>Harga</th>
                                 <th>Aksi</th>
                             </tr>
@@ -49,6 +50,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>({{$d->kode}})</td>
                                 <td>{{$d->nama}}</td>
+                                <td>{{$d->satuan}}</td>
                                 <td>{{$d->harga}}</td>
                                 <td>
                                     <a href="{{Route('admin.jenis-pengujian-detail.edit',$d->id)}}"

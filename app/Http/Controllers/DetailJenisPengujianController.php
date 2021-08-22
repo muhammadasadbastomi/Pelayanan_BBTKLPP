@@ -50,10 +50,10 @@ class DetailJenisPengujianController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DetailJenisPengujian  $detail_jenis_pengujian
+     * @param  \App\Models\DetailJenisPengujian  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(DetailJenisPengujian $detail_jenis_pengujian)
+    public function show($id)
     {
         return view('admin.jenis-pengujian.show', compact('detail_jenis_pengujian'));
     }
@@ -61,14 +61,15 @@ class DetailJenisPengujianController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DetailJenisPengujian  $detail_jenis_pengujian
+     * @param  \App\Models\DetailJenisPengujian  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(DetailJenisPengujian $detail_jenis_pengujian)
+    public function edit($id)
     {
-        $jenisSample = Jenis::all();
+        $detail_jenis_pengujian = DetailJenisPengujian::findOrFail($id);
+        $jenis_pengujian = JenisPengujian::findOrFail($detail_jenis_pengujian->jenis_pengujian_id);
 
-        return view('admin.jenis-pengujian.edit', compact('jenisSample'));
+        return view('admin.jenis-pengujian-detail.edit', compact('jenis_pengujian', 'detail_jenis_pengujian'));
 
     }
 
@@ -76,27 +77,30 @@ class DetailJenisPengujianController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DetailJenisPengujian  $detail_jenis_pengujian
+     * @param  \App\Models\DetailJenisPengujian  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DetailJenisPengujian $detail_jenis_pengujian)
+    public function update(Request $request, $id)
     {
+        $detail_jenis_pengujian = DetailJenisPengujian::findOrFail($id);
+
         $input = $request->all();
 
         $detail_jenis_pengujian->update($input);
 
-        return redirect()->route('admin.jenis-pengujian.index')->withSuccess('Data berhasil diubah');
+        return redirect()->route('admin.jenis-pengujian-detail.index', $detail_jenis_pengujian->jenis_pengujian_id)->withSuccess('Data berhasil diubah');
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DetailJenisPengujian  $detail_jenis_pengujian
+     * @param  \App\Models\DetailJenisPengujian  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DetailJenisPengujian $detail_jenis_pengujian)
+    public function destroy($id)
     {
+        $detail_jenis_pengujian = DetailJenisPengujian::findOrFail($id);
 
         try {
             $detail_jenis_pengujian->delete();

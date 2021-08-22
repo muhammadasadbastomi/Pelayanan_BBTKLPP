@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group m-b-40">
                         <select class="form-control p-0" name="jk" id="input6" required>
-                            <option>Pilih Jenis Kelamin</option>
+                            <option value="">Pilih Jenis Kelamin</option>
                             <option value="Laki-laki">Laki-laki</option>
                             <option value="Perempuan">Perempuan</option>
                         </select><span class="bar"></span>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group m-b-40">
                         <select class="form-control p-0" name="role" id="input6" required>
-                            <option>Pilih Role User</option>
+                            <option value="">Pilih Role User</option>
                             <option value="1">Super Admin/Petugas Teknik</option>
                             <option value="2">Petugas Penyelia</option>
                             <option value="0">Pemohon</option>
