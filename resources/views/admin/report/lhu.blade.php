@@ -117,6 +117,12 @@
                 {{'TES'}}</h2> --}}
             <br>
             <table style="font-size:15px !important">
+                <tr>
+                    <td style="height:15px !important;">Nomor LHU</td>
+                    <td>:</td>
+                    <td>PTL.M.01{{$permohonan->id}}/LHU/BBTKL-BB/X/{{Carbon\carbon::parse($permohonan->created_at)->format('Y')}}
+                    </td>
+                </tr>
                 <tr style="vertical-align: top; text-align: justify; !important">
                     <td style="height:15px !important;">Nama Pelanggan</td>
                     <td>:</td>
@@ -141,12 +147,7 @@
                     <td>{{$data->first()->nama_kontak}}
                     </td>
                 </tr>
-                <tr>
-                    <td style="height:15px !important;">Nomor LHU</td>
-                    <td>:</td>
-                    <td>PTL.M.01{{$permohonan->id}}/LHU/BBTKL-BB/X/{{Carbon\carbon::parse($permohonan->created_at)->format('Y')}}
-                    </td>
-                </tr>
+
                 <tr>
                     <td style="height:15px !important;">No. FPPS</td>
                     <td>:</td>
