@@ -33,7 +33,7 @@
                     <!-- Column -->
                     <div class="col p-r-0">
                         {{-- <h1 class="font-light">{{$kegiatan}}</h1> --}}
-                        <h6 class="text-muted">Kegiatan</h6>
+                        <h6 class="text-muted">1</h6>
                     </div>
                     <!-- Column -->
                     <div class="col text-right align-self-center">
@@ -53,7 +53,7 @@
                     <!-- Column -->
                     <div class="col p-r-0">
                         {{-- <h1 class="font-light">{{$konflik}}</h1> --}}
-                        <h6 class="text-muted">Konflik</h6>
+                        <h6 class="text-muted">2</h6>
                     </div>
                     <!-- Column -->
                     <div class="col text-right align-self-center">
@@ -73,7 +73,7 @@
                     <!-- Column -->
                     <div class="col p-r-0">
                         {{-- <h1 class="font-light">{{$gangguan}}</h1> --}}
-                        <h6 class="text-muted">Gangguan</h6>
+                        <h6 class="text-muted">3</h6>
                     </div>
                     <!-- Column -->
                     <div class="col text-right align-self-center">
@@ -93,7 +93,7 @@
                     <!-- Column -->
                     <div class="col p-r-0">
                         {{-- <h1 class="font-light">{{$kriminal}}</h1> --}}
-                        <h6 class="text-muted">Kriminal</h6>
+                        <h6 class="text-muted">4</h6>
                     </div>
                     <!-- Column -->
                     <div class="col text-right align-self-center">
@@ -107,7 +107,7 @@
 
     <!-- Column -->
 </div>
-<div class="row">
+{{-- <div class="row">
     <div class="col-md-12 col-lg-12 col-xs-12">
         <div class="card">
             <div class="card-body">
@@ -115,7 +115,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- ============================================================== -->
 <!-- End PAge Content -->
 <!-- ============================================================== -->
@@ -134,7 +134,7 @@
 @section('script')
 <script src="{{asset('assets/node_modules/raphael/raphael-min.js')}}"></script>
 <script src="{{asset('assets/node_modules/morrisjs/morris.js')}}"></script>
-<script>
+{{-- <script>
     Morris.Bar({
     element: 'morris-bar-chart',
     data: [{
@@ -152,6 +152,6 @@
     gridLineColor: '#eef0f2',
     resize: true
     });
-</script>
+</script> --}}
 
 @endsection
