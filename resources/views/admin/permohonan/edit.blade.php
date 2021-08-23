@@ -94,7 +94,7 @@
                     <div class="form-group m-b-40">
                         <label for="input1">Status Terima</label>
                         <span class="bar"></span>
-                        <select name="status_kesesuaian_metode" id="" class="form-control" required>
+                        <select name="status_terima" id="" class="form-control" required>
                             <option value="">Pilih Status Terima</option>
                             <option value="1">Dapat Dilayani</option>
                             <option value="0">Tidak Dapat Dilayani</option>

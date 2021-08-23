@@ -82,6 +82,8 @@ Route::middleware(['admin'])->group(function () {
             Route::get('stp/{id}', [ReportController::class, 'stp'])->name('stp');
             Route::get('lhus/{id}', [ReportController::class, 'lhus'])->name('lhus');
             Route::get('lhu/{id}', [ReportController::class, 'lhu'])->name('lhu');
+            Route::get('fpps/{id}', [ReportController::class, 'fpps'])->name('fpps');
+            Route::get('fpps-detail/{id}', [ReportController::class, 'fppsDetail'])->name('fppsDetail');
             // Route::get('/cetak/kegiatan', [ReportController::class, 'kegiatanAll'])->name('kegiatanAll');
             // Route::post('/cetak/kegiatan-tahun', [ReportController::class, 'kegiatanYear'])->name('kegiatanYear');
             // Route::post('/cetak/kegiatan-bulan', [ReportController::class, 'kegiatanMonth'])->name('kegiatanMonth');

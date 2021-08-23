@@ -21,10 +21,14 @@
 
             @endif
             @if($permohonan->detail_permohonan->count() != 0)
-            <a target="_blank" href="{{Route('admin.report.stp',$permohonan->id)}}"
+            <a target="_blank" href="{{Route('admin.report.fpps',$permohonan->id)}}"
                 class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
                 Cetak
                 FPPS</a>
+            <a target="_blank" href="{{Route('admin.report.fppsDetail',$permohonan->id)}}"
+                class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
+                Cetak
+                Detail FPPS</a>
             @endif
             @if($permohonan->stp->detail_stp->count() != 0)
             <a target="_blank" href="{{Route('admin.report.stp',$permohonan->id)}}"

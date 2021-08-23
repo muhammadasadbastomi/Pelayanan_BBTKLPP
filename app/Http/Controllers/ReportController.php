@@ -60,4 +60,25 @@ class ReportController extends Controller
 
         return $pdf->stream('Laporan LHU.pdf');
     }
+
+    public function fpps($id)
+    {
+        $data = Permohonan::FindOrFail($id);
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.fpps', compact('now', 'data'));
+        $pdf->setPaper('a4', 'potrait');
+
+        return $pdf->stream('Laporan FPPS.pdf');
+    }
+    public function fppsDetail($id)
+    {
+        $data = Permohonan::FindOrFail($id);
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.detail-fpps', compact('now', 'data'));
+        $pdf->setPaper('a4', 'potrait');
+
+        return $pdf->stream('Laporan Detail FPPS.pdf');
+    }
 }
