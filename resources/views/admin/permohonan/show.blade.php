@@ -10,6 +10,7 @@
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
+            @if($permohonan->stp)
             @if ($permohonan->stp->detail_stp->first()->lhus->count() == 0)
 
             <ol class="breadcrumb">
@@ -17,6 +18,13 @@
                 <li class="breadcrumb-item ">Data Permohonan</li>
                 <li class="breadcrumb-item active">Detail</li>
             </ol>
+
+            @endif
+            @if($permohonan->detail_permohonan->count() != 0)
+            <a target="_blank" href="{{Route('admin.report.stp',$permohonan->id)}}"
+                class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
+                Cetak
+                FPPS</a>
             @endif
             @if($permohonan->stp->detail_stp->count() != 0)
             <a target="_blank" href="{{Route('admin.report.stp',$permohonan->id)}}"
@@ -35,6 +43,7 @@
                 class="btn btn-info btn-sm m-l-15"><i class="fa fa-print"></i>
                 Cetak
                 LHU</a>
+            @endif
             @endif
             {{-- if user penyelia --}}
             @if (Auth::user()->role == 2)
