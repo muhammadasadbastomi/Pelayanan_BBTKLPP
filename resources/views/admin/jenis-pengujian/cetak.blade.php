@@ -12,7 +12,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                 <li class="breadcrumb-item ">Data Jenis Pengujian</li>
-                <li class="breadcrumb-item active">Edit</li>
+                <li class="breadcrumb-item active">Cetak</li>
             </ol>
         </div>
     </div>
@@ -26,28 +26,21 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <form class="floating-labels m-t-40" action="{{route('admin.jenis-pengujian.update',$jenis_pengujian->id)}}"
-                method="POST" enctype="multipart/form-data">
+            <form class="floating-labels m-t-40" action="{{route('admin.report.jenisPengujian')}}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
-                @method('put')
                 <div class="card-body">
                     <div class="form-group m-b-40">
-                        <select class="form-control p-0" name="jenis_id" id="input6" required>
-                            <option>Pilih Jenis Sampel</option>
-                            @foreach ($jenisSample as $d)
+                        <select class="form-control p-0" name="jenis_pengujian_id" id="input6" required>
+                            <option>Pilih Jenis Pengujian</option>
+                            @foreach ($jenisPengujian as $d)
 
-                            <option value="{{$d->id}}" {{$jenis_pengujian->jenis_id == $d->id ? 'selected' : ''}}>
-                                {{$d->jenis}}</option>
+                            <option value="{{$d->id}}">{{$d->nama_metode}}</option>
                             @endforeach
                         </select><span class="bar"></span>
-                        <label for="input6">Jenis Sampel</label>
+                        <label for="input6">Jenis Pengujian</label>
                     </div>
-                    <div class="form-group m-b-40">
-                        <input type="text" name="nama_metode" class="form-control"
-                            value="{{$jenis_pengujian->nama_metode}}" id="input1" required>
-                        <span class="bar"></span>
-                        <label for="input1">Nama Metode</label>
-                    </div>
+
 
                 </div>
                 <div class="card-footer text-right">
@@ -55,7 +48,7 @@
                             class="fa fa-arrow-left"></i>
                         Batal</a>
                     <button type="submit" class="btn btn-info  m-l-15"><i class="fa fa-save"></i>
-                        Simpan</a>
+                        Cetak Data</a>
                 </div>
             </form>
         </div>

@@ -102,7 +102,8 @@ class LhuController extends Controller
         } catch (QueryException $e) {
 
             if ($e->getCode() == "23000") {
-                return back()->withError('Data gagal dihapus');
+                return back()->withErrors('Data gagal dihapus');
+
             }
         }
 

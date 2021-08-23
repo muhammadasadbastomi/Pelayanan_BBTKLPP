@@ -32,6 +32,9 @@ Route::get('/', function () {
 Route::prefix('/auth')->name('auth.')->group(function () {
     Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/register', [LoginController::class, 'register'])->name('register');
+    Route::post('/register', [UserController::class, 'store'])->name('storeRegister');
+
 });
 
 Route::middleware(['admin'])->group(function () {
@@ -41,6 +44,9 @@ Route::middleware(['admin'])->group(function () {
         Route::resource('user', UserController::class);
         Route::resource('jenis', JenisController::class);
         Route::resource('jenis-pengujian', JenisPengujianController::class);
+        Route::name('jenis-pengujian.')->prefix('jenisPengujian')->group(function () {
+            Route::get('/cetak', [JenisPengujianController::class, 'cetak'])->name('cetak');
+        });
         // Route::resource('detail-jenis-pengujian', DetailJenisPengujianController::class)->except(['index']);
         Route::name('jenis-pengujian-detail.')->prefix('jenis-pengujian-detail')->group(function () {
             Route::get('/index/{id}', [DetailJenisPengujianController::class, 'index'])->name('index');
@@ -84,6 +90,8 @@ Route::middleware(['admin'])->group(function () {
             Route::get('lhu/{id}', [ReportController::class, 'lhu'])->name('lhu');
             Route::get('fpps/{id}', [ReportController::class, 'fpps'])->name('fpps');
             Route::get('fpps-detail/{id}', [ReportController::class, 'fppsDetail'])->name('fppsDetail');
+            Route::get('permohonan/', [ReportController::class, 'permohonanAll'])->name('permohonanAll');
+            Route::post('jenis-pengujian/', [ReportController::class, 'jenisPengujian'])->name('jenisPengujian');
             // Route::get('/cetak/kegiatan', [ReportController::class, 'kegiatanAll'])->name('kegiatanAll');
             // Route::post('/cetak/kegiatan-tahun', [ReportController::class, 'kegiatanYear'])->name('kegiatanYear');
             // Route::post('/cetak/kegiatan-bulan', [ReportController::class, 'kegiatanMonth'])->name('kegiatanMonth');

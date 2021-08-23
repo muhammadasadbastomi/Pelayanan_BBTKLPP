@@ -44,10 +44,45 @@
         <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="{{route('auth.authenticate')}}"
-                        method="POST">
+                    <form class="form-horizontal form-material" id="loginform" action="{{route('auth.storeRegister')}}"
+                        method="POST" enctype="multipart/form-data">
                         @csrf
-                        <h3 class="box-title m-b-20">Sign In</h3>
+                        <h3 class="box-title m-b-20">Pendaftaran Pemohon</h3>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="nama" required="" placeholder="Nama">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="nip" required="" placeholder="NIK">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="alamat" required="" placeholder="Alamat">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <label for="">Jenis Kelamin</label>
+                                <select class="form-control p-0" name="jk" id="input6" required>
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="no_hp" required="" placeholder="Nomor HP">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <label for="">Foto</label>
+                                <input class="form-control" type="file" name="foto" required="" placeholder="Foto">
+                            </div>
+                        </div>
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="username" required=""
@@ -61,14 +96,13 @@
                         </div>
                         <div class="form-group text-center">
                             <div class="col-xs-12 p-b-20">
-                                <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Log In</button>
+                                <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Daftar</button>
                             </div>
                         </div>
                     </form>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            Belum punya akun? <a href="{{route('auth.register')}}"
-                                class="text-info m-l-5"><b>Daftar</b></a>
+                            Sudah mempunyai akun? <a href="{{route('login')}}" class="text-info m-l-5"><b>Log In</b></a>
                         </div>
                     </div>
                 </div>

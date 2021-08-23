@@ -17,8 +17,12 @@ class LoginController extends Controller
     {
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
-
+            if (Auth::user()->status == 0) {
+                Auth::logout();
+                return redirect()->route('login')->withErrors('Akun anda belum di verifikasi oleh admin');
+            }
             $request->session()->regenerate();
+
             switch (Auth::user()->role) {
                 case 1:
                     return redirect('/admin/index');
@@ -42,5 +46,10 @@ class LoginController extends Controller
     {
         Auth::logout();
         return redirect()->route('login')->withSuccess('Anda berhasil logout');
+    }
+
+    public function register()
+    {
+        return view('register');
     }
 }

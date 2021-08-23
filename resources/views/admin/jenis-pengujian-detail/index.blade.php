@@ -36,7 +36,7 @@
 
                             <tr>
                                 <th>No</th>
-                                <th>Kode Detail Jenis Pengujian (Satuan)</th>
+                                <th>Kode Detail Jenis Pengujian </th>
                                 <th>Nama Detail Jenis Pengujian</th>
                                 <th>Satuan</th>
                                 <th>Harga</th>

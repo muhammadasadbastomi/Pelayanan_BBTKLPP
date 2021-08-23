@@ -68,7 +68,7 @@ class JenisPengujianController extends Controller
     {
         $jenisSample = Jenis::all();
 
-        return view('admin.jenis-pengujian.edit', compact('jenisSample'));
+        return view('admin.jenis-pengujian.edit', compact('jenisSample', 'jenis_pengujian'));
 
     }
 
@@ -104,9 +104,14 @@ class JenisPengujianController extends Controller
         } catch (QueryException $e) {
 
             if ($e->getCode() == "23000") {
-                return back()->withError('Data gagal dihapus');
+                return back()->withErrors('Data gagal dihapus');
             }
         }
 
+    }
+    public function cetak()
+    {
+        $jenisPengujian = JenisPengujian::all();
+        return view('admin.jenis-pengujian.cetak', compact('jenisPengujian'));
     }
 }

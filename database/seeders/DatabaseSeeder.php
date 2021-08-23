@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             'no_hp' => '087778989899',
             'foto' => 'default.png',
             'role' => '1',
+            'status' => '1',
         ]);
 
     }

@@ -96,7 +96,9 @@ class PermohonanController extends Controller
     {
         switch (Auth::user()->role) {
             case 0:
-                return view('pemohon.permohonan.edit', compact('permohonan'));
+                $jenisSample = JenisPengujian::all();
+
+                return view('pemohon.permohonan.edit', compact('permohonan', 'jenisSample'));
                 break;
 
             default:
@@ -167,7 +169,8 @@ class PermohonanController extends Controller
         } catch (QueryException $e) {
 
             if ($e->getCode() == "23000") {
-                return back()->withError('Data gagal dihapus');
+                return back()->withErrors('Data gagal dihapus');
+
             }
         }
 

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailStp;
+use App\Models\JenisPengujian;
 use App\Models\Lhu;
 use App\Models\Lhus;
 use App\Models\Permohonan;
 use App\Models\Stp;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use PDF;
 
 class ReportController extends Controller
@@ -80,5 +82,27 @@ class ReportController extends Controller
         $pdf->setPaper('a4', 'potrait');
 
         return $pdf->stream('Laporan Detail FPPS.pdf');
+    }
+
+    public function permohonanAll()
+    {
+        $data = Permohonan::all();
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.permohonanAll', compact('now', 'data'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Laporan Data Permohonan.pdf');
+    }
+
+    public function jenisPengujian(Request $request)
+    {
+        $data = JenisPengujian::findOrFail($request->jenis_pengujian_id);
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.jenis-pengujian', compact('now', 'data'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Laporan Data Jenis Pengujian.pdf');
     }
 }

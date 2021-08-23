@@ -39,6 +39,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'username' => 'required|unique:users|max:255',
+        ]);
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
 
@@ -51,9 +54,13 @@ class UserController extends Controller
             $input['foto'] = $file_name;
         }
 
-        User::create($input);
+        $data = User::create($input);
 
-        return redirect()->route('admin.user.index')->withSuccess('Data berhasil disimpan');
+        if ($data->role == 0) {
+            return redirect()->route('login')->withSuccess('Pendaftaran Berhasil');
+        } else {
+            return redirect()->route('admin.user.index')->withSuccess('Data berhasil disimpan');
+        }
 
     }
 
@@ -126,7 +133,8 @@ class UserController extends Controller
         } catch (QueryException $e) {
 
             if ($e->getCode() == "23000") {
-                return back()->withError('Data gagal dihapus');
+                return back()->withErrors('Data gagal dihapus');
+
             }
         }
 

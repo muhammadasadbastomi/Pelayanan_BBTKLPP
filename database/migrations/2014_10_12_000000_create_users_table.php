@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('no_hp');
             $table->string('foto');
             $table->tinyInteger('role')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
         });

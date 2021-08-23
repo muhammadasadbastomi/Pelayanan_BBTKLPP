@@ -43,6 +43,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>No HP</th>
                                 <th>Role</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -68,6 +69,16 @@
                                     @break
                                     @default
                                     <button class="btn btn btn-sm btn-rounded btn-info">Pemohon</button>
+
+                                    @endswitch
+                                </td>
+                                <td>
+                                    @switch($d->status)
+                                    @case(1)
+                                    <button class="btn btn btn-sm btn-rounded btn-success">Aktif</button>
+                                    @break
+                                    @default
+                                    <button class="btn btn btn-sm btn-rounded btn-warning">Tidak Aktif</button>
 
                                     @endswitch
                                 </td>

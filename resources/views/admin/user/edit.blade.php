@@ -90,6 +90,14 @@
                         </select><span class=" bar"></span>
                         <label for="input6">Role User</label>
                     </div>
+                    <div class="form-group m-b-40">
+                        <select class="form-control p-0" name="status" id="input6" required>
+                            <option value="">Pilih Status</option>
+                            <option value="1" {{$user->status == 1 ? 'selected' :''}}>Aktif</option>
+                            <option value="0" {{$user->status == 0 ? 'selected' :''}}>Tidak Aktif</option>
+                        </select><span class="bar"></span>
+                        <label for="input6">Status</label>
+                    </div>
                 </div>
                 <div class="card-footer text-right">
                     <a href="{{Route('admin.user.index')}}" class="btn btn-danger  m-l-15"><i

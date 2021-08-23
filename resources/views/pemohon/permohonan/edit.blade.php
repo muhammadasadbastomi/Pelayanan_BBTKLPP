@@ -26,21 +26,67 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <form class="floating-labels m-t-40" action="{{route('admin.jenis.update',$jeni->id)}}" method="POST"
-                enctype="multipart/form-data">
+            <form class="floating-labels m-t-40" action="{{route('pemohon.permohonan.update',$permohonan->id)}}"
+                method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="card-body">
-                    <div class="form-group m-b-40">
-                        <input type="text" name="jenis" value="{{$jeni->jenis}}" class="form-control" id="input1"
-                            required>
-                        <span class="bar"></span>
-                        <label for="input1">Nama Jenis Sampel</label>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group m-b-40">
+                                <label for="input1">Nama Jenis Sampel</label>
+                                <span class="bar"></span>
+                                <select name="jenis_pengujian_id" id="" class="form-control" required>
+                                    @foreach ($jenisSample as $d)
+                                    <option value="{{$d->id}} "
+                                        {{$d->id == $permohonan->jenis_pengujian_id ? 'selected' :''}}>
+                                        {{$d->nama_metode}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group m-b-40">
+                                <label for="input1">Jumlah Sampel</label>
+                                <span class="bar"></span>
+                                <input type="text" name="jumlah" class="form-control" value="{{$permohonan->jumlah}}"
+                                    required>
+                            </div>
+                            <div class="form-group m-b-40">
+                                <label for="input1">Berat Sampel</label>
+                                <span class="bar"></span>
+                                <input type="text" name="berat" class="form-control" value="{{$permohonan->berat}}"
+                                    required>
+                            </div>
 
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group m-b-40">
+                                <label for="input1">Deskripsi Sampel</label>
+                                <span class="bar"></span>
+                                <input type="text" name="deskripsi" class="form-control"
+                                    value="{{$permohonan->deskripsi}}" required>
+                            </div>
+                            <div class="form-group m-b-40">
+                                <label for="input1">Bentuk Sampel</label>
+                                <span class="bar"></span>
+                                <input type="text" name="bentuk" class="form-control" value="{{$permohonan->bentuk}}"
+                                    required>
+                            </div>
+                            <div class="form-group m-b-40">
+                                <label for="input1">Wadah Sampel</label>
+                                <span class="bar"></span>
+                                <input type="text" name="wadah" class="form-control" value="{{$permohonan->wadah}}"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group m-b-40">
+                        <label for="input1">Sifat Sampel</label>
+                        <span class="bar"></span>
+                        <input type="text" name="sifat" class="form-control" value="{{$permohonan->sifat}}" required>
+                    </div>
                 </div>
                 <div class="card-footer text-right">
-                    <a href="{{Route('admin.jenis.index')}}" class="btn btn-danger  m-l-15"><i
+                    <a href="{{Route('pemohon.permohonan.index')}}" class="btn btn-danger  m-l-15"><i
                             class="fa fa-arrow-left"></i>
                         Batal</a>
                     <button type="submit" class="btn btn-info  m-l-15"><i class="fa fa-save"></i>
