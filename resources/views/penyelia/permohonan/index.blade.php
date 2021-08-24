@@ -78,7 +78,47 @@
                                     <button class="btn btn-sm btn-warning">Menunggu Penyerahan Sampel</button>
 
                                     @break
+                                    @case(2)
+                                    <button class="btn btn-sm btn-warning">Proses LHUS (Laporan Hasil Uji Sementara) dan
+                                        STP (Surat Tugas Pengujian) Oleh Petugas Pelayanan Teknik</button>
+
+                                    @break
+                                    @case(3)
+                                    <button class="btn btn-sm btn-warning">Penyerahan Sampel, LHUS dan STP oleh petugas
+                                        pelayanan teknik ke laboratorium</button>
+
+                                    @break
+                                    @case(4)
+                                    <button class="btn btn-sm btn-warning">Verifikasi oleh admin penyelia data
+                                        permohonan dan sampel sudah diterima oleh laboratorium</button>
+
+                                    @break
+                                    @case(5)
+                                    <button class="btn btn-sm btn-warning">Analisis sampel oleh laboratorium</button>
+
+                                    @break
+                                    @case(6)
+                                    <button class="btn btn-sm btn-warning">Verifikasi LHUS dan penyerahan kepada petugas
+                                        pelayanan teknik</button>
+
+                                    @break
+                                    @case(7)
+                                    <button class="btn btn-sm btn-warning">Proses pembuatan LHU oleh petugas pelayanan
+                                        teknik</button>
+
+                                    @break
+                                    @case(8)
+                                    <button class="btn btn-sm btn-warning">Sampel Selesai Diuji</button>
+
+                                    @break
+                                    @case(9)
+                                    <button class="btn btn-sm btn-warning">Menunggu Pengambilan LHU dan
+                                        Pembayaran</button>
+
+                                    @break
+
                                     @default
+                                    <button class="btn btn-sm btn-info">Selesai Pengambilan LHU dan Pembayaran</button>
 
                                     @endswitch
                                     @endif
