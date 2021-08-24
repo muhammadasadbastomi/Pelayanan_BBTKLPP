@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use File;
-use Illuminate\Database\QueryException;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {
@@ -55,12 +56,10 @@ class UserController extends Controller
         }
 
         $data = User::create($input);
-
-        if ($data->role == 0) {
-            return redirect()->route('login')->withSuccess('Pendaftaran Berhasil');
-        } else {
-            return redirect()->route('admin.user.index')->withSuccess('Data berhasil disimpan');
+        if(Auth::user()){
+        return redirect()->route('admin.user.index')->withSuccess('Data berhasil disimpan');
         }
+        return redirect()->route('login')->withSuccess('Pendaftaran Berhasil');
 
     }
 
