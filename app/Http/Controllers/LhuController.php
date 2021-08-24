@@ -17,8 +17,9 @@ class LhuController extends Controller
     public function index($id)
     {
         $permohonan = Permohonan::findOrFail($id);
-        $detailStp = DetailStp::whereStpId($permohonan->stp->id)->first();
-        $lhu = Lhu::whereDetailStpId($detailStp->id)->get();
+        $detailStp = DetailStp::whereStpId($permohonan->stp->id)->pluck('id');
+        // dd($detailStp);
+        $lhu = Lhu::whereIn('detail_stp_id', $detailStp)->get();
         return view('admin.lhu.index', compact('permohonan', 'lhu'));
 
     }
@@ -45,7 +46,6 @@ class LhuController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-
         $data = Lhu::create($input);
         $permohonan_id = $data->detail_stp->stp->permohonan_id;
 
