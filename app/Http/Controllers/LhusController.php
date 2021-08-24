@@ -18,8 +18,9 @@ class LhusController extends Controller
     public function index($id)
     {
         $permohonan = Permohonan::findOrFail($id);
-        $detailStp = DetailStp::whereStpId($permohonan->stp->id)->first();
-        $lhus = Lhus::whereDetailStpId($detailStp->id)->get();
+        $detailStp = DetailStp::whereStpId($permohonan->stp->id)->pluck('id');
+        $lhus = Lhus::whereIn('detail_stp_id', $detailStp)->get();
+
         return view('admin.lhus.index', compact('permohonan', 'lhus'));
     }
 
