@@ -92,6 +92,7 @@ Route::middleware(['admin'])->group(function () {
             Route::get('fpps-detail/{id}', [ReportController::class, 'fppsDetail'])->name('fppsDetail');
             Route::get('permohonan/', [ReportController::class, 'permohonanAll'])->name('permohonanAll');
             Route::post('jenis-pengujian/', [ReportController::class, 'jenisPengujian'])->name('jenisPengujian');
+            Route::get('pemohon/', [ReportController::class, 'pemohon'])->name('pemohon');
             // Route::get('/cetak/kegiatan', [ReportController::class, 'kegiatanAll'])->name('kegiatanAll');
             // Route::post('/cetak/kegiatan-tahun', [ReportController::class, 'kegiatanYear'])->name('kegiatanYear');
             // Route::post('/cetak/kegiatan-bulan', [ReportController::class, 'kegiatanMonth'])->name('kegiatanMonth');

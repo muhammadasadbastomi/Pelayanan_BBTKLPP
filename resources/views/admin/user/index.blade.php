@@ -16,6 +16,9 @@
             <a href="{{Route('admin.user.create')}}" class="btn btn-info d-none d-lg-block m-l-15"><i
                     class="fa fa-plus-circle"></i> Tambah
                 Data</a>
+            <a target="_blank" href="{{Route('admin.report.pemohon')}}" class="btn btn-info d-none d-lg-block m-l-15"><i
+                    class="fa fa-print"></i> Cetak
+                Data</a>
         </div>
     </div>
 </div>

@@ -8,6 +8,7 @@ use App\Models\Lhu;
 use App\Models\Lhus;
 use App\Models\Permohonan;
 use App\Models\Stp;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PDF;
@@ -104,5 +105,16 @@ class ReportController extends Controller
         $pdf->setPaper('a4', 'landscape');
 
         return $pdf->stream('Laporan Data Jenis Pengujian.pdf');
+    }
+
+    public function pemohon()
+    {
+        $data = User::where('role', '0')->get();
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.pemohon', compact('now', 'data'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Laporan Data Pemohon.pdf');
     }
 }
