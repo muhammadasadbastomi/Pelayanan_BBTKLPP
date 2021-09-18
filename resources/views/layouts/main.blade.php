@@ -426,6 +426,19 @@
                                 class="ti-receipt"></i>Data
                             Permohonan</span></a>
                     </li>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                                class="ti-server"></i><span class="hide-menu">Laporan
+                            </span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a target="_blank" href="{{Route('admin.report.pemohon')}}">Pemohon</a></li>
+                            <li><a target="_blank" href="{{Route('admin.report.penyelia')}}">Penyelia</a></li>
+                            <li><a href="{{route('admin.report.permohonanindex')}}">Permohonan (periode)</a></li>
+                            <li><a href="{{route('admin.report.jenisindex')}}">Permohonan (jenis sampel)</a></li>
+                            <li><a href="{{route('admin.report.bentukindex')}}">Permohonan (bentuk sampel)</a></li>
+                            <li><a href="{{route('admin.report.sifatindex')}}">Permohonan (sifat sampel)</a></li>
+                            <li><a href="{{route('admin.report.wadahindex')}}">Permohonan (wadah sampel)</a></li>
+                        </ul>
+                    </li>
                     {{-- <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="ti-server"></i><span class="hide-menu">Master
                                 Data</span></a>
@@ -548,6 +561,7 @@
     </script>
     @include('layouts.alert')
     @include('layouts.alert_error')
+    @include('layouts.filter')
     @yield('script')
 </body>
 

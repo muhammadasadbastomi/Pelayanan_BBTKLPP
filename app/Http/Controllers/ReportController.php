@@ -117,4 +117,105 @@ class ReportController extends Controller
 
         return $pdf->stream('Laporan Data Pemohon.pdf');
     }
+
+    public function penyelia()
+    {
+        $data = User::where('role', '2')->get();
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.penyelia', compact('now', 'data'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Laporan Data penyelia.pdf');
+    }
+
+    public function permohonanindex()
+    {
+        return view('admin.report.permohonanindex');
+    }
+
+    public function permohonanperiode(Request $request)
+    {
+        $start  = $request->start;
+        $end  = $request->end;
+        $data = Permohonan::wherebetween('created_at', [$start, $end])->get();
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.permohonanperiode', compact('now', 'data', 'start', 'end'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Laporan Data Permohonan Periode.pdf');
+    }
+
+    public function jenisindex()
+    {
+        $data = JenisPengujian::all();
+
+        return view('admin.report.jenisindex', compact('data'));
+    }
+
+    public function permohonanjenis(Request $request)
+    {
+        $jenis = $request->jenis_pengujian_id;
+        $nama = jenisPengujian::where('id','=', $jenis)->first();
+        $data = Permohonan::where('jenis_pengujian_id','=', $jenis)->get();
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.permohonanjenis', compact('now', 'data', 'nama'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Laporan Data Permohonan Jenis.pdf');
+    }
+
+    public function bentukindex()
+    {
+        return view('admin.report.bentukindex');
+    }
+
+    public function permohonanbentuk(Request $request)
+    {
+        $data = Permohonan::where('bentuk','LIKE', '%' . $request->bentuk . '%')->get();
+        $bentuk = strtoupper($request->bentuk);
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.permohonanbentuk', compact('now', 'data', 'bentuk'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Laporan Data Permohonan Bentuk.pdf');
+    }
+
+    public function sifatindex()
+    {
+        return view('admin.report.sifatindex');
+    }
+
+    public function permohonansifat(Request $request)
+    {
+        $data = Permohonan::where('sifat','LIKE', '%' . $request->sifat . '%')->get();
+        $sifat = strtoupper($request->sifat);
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.permohonansifat', compact('now', 'data', 'sifat'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Laporan Data Permohonan sifat.pdf');
+    }
+
+    public function wadahindex()
+    {
+        return view('admin.report.wadahindex');
+    }
+
+    public function permohonanwadah(Request $request)
+    {
+        $data = Permohonan::where('wadah','LIKE', '%' . $request->wadah . '%')->get();
+        $wadah = strtoupper($request->wadah);
+
+        $now = $this->now;
+        $pdf = PDF::loadView('admin.report.permohonanwadah', compact('now', 'data', 'wadah'));
+        $pdf->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Laporan Data Permohonan wadah.pdf');
+    }
+
 }

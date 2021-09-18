@@ -109,7 +109,9 @@
     <div class="container">
         <hr style="margin-top:1px;">
         <div class="isi">
-            <h2 style="text-align:center;">LAPORAN DATA PEMOHON</h2>
+            <h2 style="text-align:center;">LAPORAN DATA PERMOHONAN
+                {{Carbon\carbon::parse($start)->translatedFormat('d-F-Y')}} s/d
+                {{Carbon\carbon::parse($end)->translatedFormat('d-F-Y')}}</h2>
             <br>
             <table id="myTable" class="table table-bordered table-striped dataTable no-footer text-center" role="grid"
                 aria-describedby="myTable_info">
@@ -117,13 +119,14 @@
 
                     <tr>
                         <th>No</th>
-                        <th>Nama</th>
-                        <th>NIP</th>
-                        <th>Username</th>
-                        <th>Alamat</th>
-                        <th>Jenis Kelamin</th>
-                        <th>No Telepon</th>
-                        <th>Status Akun</th>
+                        <th>Nama Jenis Sampel</th>
+                        <th>Jumlah Sampel</th>
+                        <th>Berat Sampel</th>
+                        <th>Deskripsi Sampel</th>
+                        <th>Bentuk Sampel</th>
+                        <th>Wadah Sampel</th>
+                        <th>Sifat Sampel</th>
+                        <th>Status Permohonan</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -131,17 +134,68 @@
 
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$d->nama}}</td>
-                        <td>{{$d->nip}}</td>
-                        <td>{{$d->username}}</td>
-                        <td>{{$d->alamat}}</td>
-                        <td>{{$d->jk}}</td>
-                        <td>{{$d->no_hp}}</td>
-                        <td>@if ($d->status == 0)
-                            Tidak Aktif
-                            @else
-                            Aktif
-                            @endif</td>
+                        <td>{{$d->jenis_pengujian->nama_metode}}</td>
+                        <td>{{$d->jumlah}}</td>
+                        <td>{{$d->berat}}</td>
+                        <td>{{$d->deskripsi}}</td>
+                        <td>{{$d->bentuk}}</td>
+                        <td>{{$d->wadah}}</td>
+                        <td>{{$d->sifat}}</td>
+                        <td>
+
+                            @switch($d->status)
+                            @case(0)
+                            Menunggu Verifikasi Petugas Pelayanan
+                            Teknik
+                            @break
+                            @case(1)
+                            Menunggu Penyerahan Sampel
+
+                            @break
+                            @case(2)
+                            Proses LHUS (Laporan Hasil Uji Sementara) dan
+                            STP (Surat Tugas Pengujian) Oleh Petugas Pelayanan Teknik
+
+                            @break
+                            @case(3)
+                            Penyerahan Sampel, LHUS dan STP oleh petugas
+                            pelayanan teknik ke laboratorium
+
+                            @break
+                            @case(4)
+                            Verifikasi oleh admin penyelia data
+                            permohonan dan sampel sudah diterima oleh laboratorium
+
+                            @break
+                            @case(5)
+                            Analisis sampel oleh laboratorium
+
+                            @break
+                            @case(6)
+                            Verifikasi LHUS dan penyerahan kepada petugas
+                            pelayanan teknik
+
+                            @break
+                            @case(7)
+                            Proses pembuatan LHU oleh petugas pelayanan
+                            teknik
+
+                            @break
+                            @case(8)
+                            Sampel Selesai Diuji
+
+                            @break
+                            @case(9)
+                            Menunggu Pengambilan LHU dan
+                            Pembayaran
+
+                            @break
+
+                            @default
+                            Selesai Pengambilan LHU dan Pembayaran
+
+                            @endswitch
+                        </td>
                     </tr>
                     @endforeach
 

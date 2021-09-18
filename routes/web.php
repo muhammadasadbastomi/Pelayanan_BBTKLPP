@@ -93,6 +93,23 @@ Route::middleware(['admin'])->group(function () {
             Route::get('permohonan/', [ReportController::class, 'permohonanAll'])->name('permohonanAll');
             Route::post('jenis-pengujian/', [ReportController::class, 'jenisPengujian'])->name('jenisPengujian');
             Route::get('pemohon/', [ReportController::class, 'pemohon'])->name('pemohon');
+            Route::get('penyelia/', [ReportController::class, 'penyelia'])->name('penyelia');
+
+            Route::get('permohonanindex/', [ReportController::class, 'permohonanindex'])->name('permohonanindex');
+            Route::post('permohonanperiode/', [ReportController::class, 'permohonanperiode'])->name('permohonanperiode');
+
+            Route::get('jenisindex/', [ReportController::class, 'jenisindex'])->name('jenisindex');
+            Route::post('permohonanjenis/', [ReportController::class, 'permohonanjenis'])->name('permohonanjenis');
+
+            Route::get('bentukindex/', [ReportController::class, 'bentukindex'])->name('bentukindex');
+            Route::post('permohonanbentuk/', [ReportController::class, 'permohonanbentuk'])->name('permohonanbentuk');
+
+            Route::get('sifatindex/', [ReportController::class, 'sifatindex'])->name('sifatindex');
+            Route::post('permohonansifat/', [ReportController::class, 'permohonansifat'])->name('permohonansifat');
+
+            Route::get('wadahindex/', [ReportController::class, 'wadahindex'])->name('wadahindex');
+            Route::post('permohonanwadah/', [ReportController::class, 'permohonanwadah'])->name('permohonanwadah');
+
             // Route::get('/cetak/kegiatan', [ReportController::class, 'kegiatanAll'])->name('kegiatanAll');
             // Route::post('/cetak/kegiatan-tahun', [ReportController::class, 'kegiatanYear'])->name('kegiatanYear');
             // Route::post('/cetak/kegiatan-bulan', [ReportController::class, 'kegiatanMonth'])->name('kegiatanMonth');

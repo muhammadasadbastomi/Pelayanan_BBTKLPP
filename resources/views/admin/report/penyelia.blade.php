@@ -109,7 +109,7 @@
     <div class="container">
         <hr style="margin-top:1px;">
         <div class="isi">
-            <h2 style="text-align:center;">LAPORAN DATA PEMOHON</h2>
+            <h2 style="text-align:center;">LAPORAN DATA PENYELIA LABORATORIUM</h2>
             <br>
             <table id="myTable" class="table table-bordered table-striped dataTable no-footer text-center" role="grid"
                 aria-describedby="myTable_info">
@@ -123,7 +123,7 @@
                         <th>Alamat</th>
                         <th>Jenis Kelamin</th>
                         <th>No Telepon</th>
-                        <th>Status Akun</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -137,11 +137,7 @@
                         <td>{{$d->alamat}}</td>
                         <td>{{$d->jk}}</td>
                         <td>{{$d->no_hp}}</td>
-                        <td>@if ($d->status == 0)
-                            Tidak Aktif
-                            @else
-                            Aktif
-                            @endif</td>
+
                     </tr>
                     @endforeach
 
